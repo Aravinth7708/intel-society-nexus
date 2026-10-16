@@ -26,7 +26,7 @@ const events = [
 function Events() {
   return (
     <>
-      <PageHero eyebrow="Events" title={<>Learn, meet and <span className="text-primary">defend</span></>} text="Workshops, webinars and community meetups for members and learners." />
+      <PageHero eyebrow="Events" title={<>Learn, meet and <span className="text-primary">defend</span></>} text="Workshops, webinars, CTF challenges and community meetups for members and learners." image={lab} />
       <section className="mx-auto grid max-w-7xl gap-6 px-6 py-20 md:grid-cols-3">
         {events.map((e) => (
           <article key={e.t} className="overflow-hidden rounded-2xl border bg-card shadow-card">

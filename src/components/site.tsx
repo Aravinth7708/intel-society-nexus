@@ -112,14 +112,14 @@ export function SiteFooter() {
 
 export function PageHero({ eyebrow, title, text, image }: { eyebrow: string; title: ReactNode; text: string; image?: string }) {
   return (
-    <section className="cyber-grid border-b bg-secondary">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2">
-        <div>
-          <span className="anim-up inline-block rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-accent-foreground">{eyebrow}</span>
-          <h1 className="anim-up delay-1 mt-4 text-4xl font-bold md:text-5xl">{title}</h1>
-          <p className="anim-up delay-2 mt-4 max-w-lg text-muted-foreground">{text}</p>
-        </div>
-        {image && <div className="anim-up delay-3 overflow-hidden rounded-2xl shadow-card"><img src={image} alt="" width={1280} height={896} className="ken-burns w-full" /></div>}
+    <section className="relative flex min-h-[420px] items-center overflow-hidden bg-ink">
+      {image && <img src={image} alt="" width={1280} height={896} className="ken-burns absolute inset-0 h-full w-full object-cover opacity-50" />}
+      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/30" />
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-20 text-ink-foreground">
+        <span className="anim-up inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary-foreground">{eyebrow}</span>
+        <h1 className="anim-up delay-1 mt-5 max-w-3xl text-4xl font-bold md:text-6xl [&_.text-primary]:text-shine">{title}</h1>
+        <p className="anim-up delay-2 mt-5 max-w-2xl text-lg opacity-85">{text}</p>
+        <div className="anim-up delay-3 mt-6 h-1 w-24 rounded-full bg-primary" />
       </div>
     </section>
   );

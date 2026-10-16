@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Brain, Wrench, ShieldCheck, Rocket, Clock, FlaskConical, Award, Users, ArrowRight, Gift, Plus } from "lucide-react";
+import { Brain, Wrench, ShieldCheck, Rocket, Clock, FlaskConical, Award, Users, ArrowRight, Gift, Plus, Bug, Lock, Search, GraduationCap, Megaphone, Trophy, Quote, CheckCircle2 } from "lucide-react";
 import hero from "@/assets/hero-real.jpg";
 import exam from "@/assets/exam-boy.jpg";
 import lab from "@/assets/lab-group.jpg";
+import soc from "@/assets/soc-girl.jpg";
+import student from "@/assets/student-real.jpg";
 import { SectionTitle, RegisterModal } from "@/components/site";
 
 export const Route = createFileRoute("/")({
@@ -29,6 +31,25 @@ const stats = [
   { icon: FlaskConical, v: "6 Months", l: "iLab Virtual Sandbox" },
   { icon: Award, v: "EC-Council", l: "Certificate of Participation" },
   { icon: Users, v: "Open to All", l: "No technical background needed" },
+];
+
+const focus = [
+  { icon: GraduationCap, t: "Training & Certification", d: "Industry-aligned courses with EC-Council and other global partners." },
+  { icon: Megaphone, t: "Cyber Awareness Drives", d: "Campaigns in schools, colleges and communities on online safety and fraud." },
+  { icon: Bug, t: "Ethical Hacking & CTFs", d: "Capture-the-flag events and bug-hunting challenges to sharpen real skills." },
+  { icon: Brain, t: "AI & Emerging Tech", d: "Responsible AI, machine learning for security and future-ready tools." },
+  { icon: Search, t: "Research & Forensics", d: "Student research, threat intelligence studies and digital forensics." },
+  { icon: Lock, t: "Institutional Support", d: "Security policy guidance and cyber hygiene for colleges and NGOs." },
+];
+const testimonials = [
+  { n: "Priya R.", r: "B.Tech Student, Puducherry", q: "The AI course was practical and easy to follow. The iLab access helped me practise long after the live session." },
+  { n: "Arun K.", r: "IT Professional", q: "SCIS workshops gave me a clear view of how real SOC teams work. Great community and mentors." },
+  { n: "Dr. Meena S.", r: "Faculty, Computer Science", q: "Our students benefited hugely from the SCIS awareness drive. Professional and well organised." },
+];
+const news = [
+  { img: exam, tag: "Course", d: "15 Nov 2026", t: "New batch of Introduction to AI opens for registration" },
+  { img: lab, tag: "Workshop", d: "28 Oct 2026", t: "Cyber Lab hands-on day draws students from 10 colleges" },
+  { img: soc, tag: "Webinar", d: "10 Oct 2026", t: "Inside a SOC: how analysts detect and stop attacks" },
 ];
 
 function Home() {
@@ -63,8 +84,33 @@ function Home() {
         </div>
       </section>
 
+      <section className="grid md:grid-cols-2">
+        <div className="px-6 py-20 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] md:pr-12">
+          <div className="text-xs font-bold uppercase tracking-widest text-primary">Welcome to SCIS</div>
+          <h2 className="mt-2 text-3xl font-bold md:text-4xl">Society for Cyber Intelligent Systems</h2>
+          <p className="mt-2 font-semibold">Where "Securing Our Digital Future" matters.</p>
+          <p className="mt-5 text-muted-foreground">SCIS is a registered non-profit society (Reg S.No 78/2025, NITI Aayog DARPAN PY/2025/0684517) working to build awareness, skills and careers in cybersecurity and artificial intelligence. We partner with global certification bodies like EC-Council to bring industry-grade training to students, educators and working professionals across India.</p>
+          <p className="mt-4 text-muted-foreground">Through live courses, hands-on labs, awareness drives, hackathons and community meetups, we help members learn to protect people, data and systems — responsibly and ethically.</p>
+          <Link to="/about" className="btn-primary mt-7">Learn about us <ArrowRight className="h-4 w-4" /></Link>
+        </div>
+        <div className="relative bg-gradient-to-br from-primary to-primary-hover px-6 py-20 text-primary-foreground md:pr-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] md:pl-12">
+          <div className="space-y-8">
+            {[
+              { icon: ShieldCheck, t: "Our Mission", d: "Make cybersecurity and AI education accessible, affordable and practical for every learner." },
+              { icon: Brain, t: "Our Vision", d: "A digitally safe India powered by a skilled, ethical community of cyber defenders." },
+              { icon: Users, t: "Our Community", d: "Students, faculty, researchers and professionals learning and defending together." },
+            ].map((x) => (
+              <div key={x.t} className="flex gap-4 border-b border-primary-foreground/20 pb-6 last:border-0">
+                <x.icon className="h-8 w-8 shrink-0" />
+                <div><h3 className="text-lg font-bold">{x.t}</h3><p className="mt-1 text-sm opacity-90">{x.d}</p></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <SectionTitle eyebrow="Core Pillars" title="What you'll gain" />
+        <SectionTitle eyebrow="Core Pillars" title="What you'll gain" text="Our flagship AI course is built around four pillars that take you from curiosity to confident, responsible use." />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((p) => (
             <div key={p.t} className="group rounded-2xl border bg-card p-6 shadow-card transition hover:-translate-y-1 hover:border-primary">
@@ -72,6 +118,39 @@ function Home() {
               <h3 className="mt-5 text-lg font-bold">{p.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.d}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-ink">
+        <img src={soc} alt="" width={1280} height={896} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-35" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-6 py-24 text-ink-foreground md:grid-cols-2">
+          <div><p className="text-xl">Engage with</p><h2 className="text-5xl font-bold">SCIS Community</h2></div>
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-ink-foreground/30 p-6 backdrop-blur-sm">
+            <p className="max-w-xs">Connect to workshops, CTF challenges, webinars and news you care about.</p>
+            <Link to="/events" className="btn-primary">Get Involved</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <SectionTitle eyebrow="Focus Areas" title="What we work on" text="From classrooms to boardrooms, SCIS drives cyber readiness across six key areas." />
+        <div className="grid gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {focus.map((f, i) => (
+            <div key={f.t} className="bg-card p-8 transition hover:bg-primary-soft">
+              <div className="font-display text-sm font-bold text-primary">0{i + 1}</div>
+              <f.icon className="mt-4 h-8 w-8 text-primary" />
+              <h3 className="mt-4 text-lg font-bold">{f.t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{f.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-secondary py-20">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-4">
+          {[["500+", "Members & learners"], ["25+", "Workshops conducted"], ["15+", "Partner institutions"], ["100%", "Online & accessible"]].map(([v, l]) => (
+            <div key={l}><div className="font-display text-5xl font-bold text-primary">{v}</div><div className="mt-2 text-sm text-muted-foreground">{l}</div></div>
           ))}
         </div>
       </section>
@@ -108,7 +187,62 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6">
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 md:grid-cols-2">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-widest text-primary">Why Join SCIS</div>
+          <h2 className="mt-2 text-3xl font-bold md:text-4xl">Leadership in cyber begins with lifelong learning</h2>
+          <p className="mt-4 text-muted-foreground">Membership gives you access to courses, events, mentors and a network of people who care about a safer digital world.</p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {[["Trusted Society", "Registered NGO under NITI Aayog DARPAN."], ["Certified Training", "Certificates from EC-Council partners."], ["Hands-on Labs", "6 months of iLab virtual sandbox."], ["Career Growth", "Mentorship, internships and job leads."]].map(([t, d]) => (
+              <div key={t} className="flex gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-primary" /><div><div className="font-semibold">{t}</div><div className="text-sm text-muted-foreground">{d}</div></div></div>
+            ))}
+          </div>
+          <Link to="/membership" className="btn-primary mt-8">Become a Member</Link>
+        </div>
+        <div className="relative">
+          <img src={student} alt="SCIS student member" width={1024} height={1280} loading="lazy" className="ml-auto h-[520px] w-4/5 rounded-2xl object-cover shadow-card" />
+          <div className="absolute bottom-8 left-0 w-60 rounded-xl bg-ink p-2 text-sm text-ink-foreground shadow-card">
+            {["Get Involved", "Student Membership", "Institutional Partnership", "Volunteer With Us"].map((x) => <div key={x} className="border-b border-ink-foreground/10 px-4 py-3 last:border-0">{x}</div>)}
+          </div>
+          <div className="absolute right-4 top-4 flex items-center gap-2 rounded-full bg-card px-4 py-2 text-sm font-semibold shadow-card"><Trophy className="h-4 w-4 text-primary" />EC-Council Partner</div>
+        </div>
+      </section>
+
+      <section className="bg-secondary py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <SectionTitle eyebrow="Testimonials" title="What our members say" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <figure key={t.n} className="rounded-2xl border bg-card p-7 shadow-card">
+                <Quote className="h-8 w-8 text-primary" />
+                <blockquote className="mt-4 text-muted-foreground">"{t.q}"</blockquote>
+                <figcaption className="mt-6 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">{t.n[0]}</div>
+                  <div><div className="font-semibold">{t.n}</div><div className="text-xs text-muted-foreground">{t.r}</div></div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <SectionTitle eyebrow="Latest News" title="Updates from SCIS" />
+        <div className="grid gap-6 md:grid-cols-3">
+          {news.map((n) => (
+            <article key={n.t} className="group overflow-hidden rounded-2xl border bg-card shadow-card">
+              <div className="overflow-hidden"><img src={n.img} alt="" width={1280} height={896} loading="lazy" className="h-48 w-full object-cover transition duration-500 group-hover:scale-110" /></div>
+              <div className="p-6">
+                <div className="flex gap-3 text-xs"><span className="font-bold uppercase text-primary">{n.tag}</span><span className="text-muted-foreground">{n.d}</span></div>
+                <h3 className="mt-2 text-lg font-bold group-hover:text-primary">{n.t}</h3>
+                <Link to="/events" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">Read more <ArrowRight className="h-4 w-4" /></Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="relative overflow-hidden rounded-3xl">
           <img src={lab} alt="Students working together in a cyber lab" width={1280} height={896} loading="lazy" className="h-80 w-full object-cover" />
           <div className="absolute inset-0 flex flex-col items-start justify-end bg-gradient-to-t from-ink/85 to-transparent p-8 text-ink-foreground">
