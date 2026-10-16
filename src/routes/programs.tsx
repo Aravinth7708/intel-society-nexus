@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Brain, Bug, Network, Search, Lock, Cloud } from "lucide-react";
 import soc from "@/assets/soc-girl.jpg";
-import { PageHero } from "@/components/site";
+import { PageHero, SectionTitle } from "@/components/site";
 
 export const Route = createFileRoute("/programs")({
   head: () => ({
