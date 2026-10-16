@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Brain, Wrench, ShieldCheck, Rocket, Clock, FlaskConical, Award, Users, ArrowRight, Gift, Plus } from "lucide-react";
-import hero from "@/assets/hero-boy.png";
+import hero from "@/assets/hero-real.jpg";
 import exam from "@/assets/exam-boy.jpg";
 import lab from "@/assets/lab-group.jpg";
 import { SectionTitle, RegisterModal } from "@/components/site";
@@ -35,21 +35,20 @@ function Home() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <section className="cyber-grid relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 pt-14 md:grid-cols-2">
-          <div className="pb-14">
-            <span className="rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-accent-foreground">EC-Council Partnered Program | Certified Training</span>
-            <h1 className="mt-5 text-4xl font-bold leading-tight md:text-6xl">
-              Introduction to <span className="text-primary">Artificial Intelligence</span>
-            </h1>
-            <p className="mt-3 font-display text-sm font-semibold uppercase tracking-widest text-muted-foreground">Understand | Explore | Use | Apply Responsibly</p>
-            <p className="mt-5 max-w-lg text-lg text-muted-foreground">A practical, beginner-friendly online course to help you understand AI and gain hands-on experience with everyday AI tools.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button onClick={() => setOpen(true)} className="btn-primary">Claim Free Course with Membership <ArrowRight className="h-4 w-4" /></button>
-              <Link to="/ai-course" className="btn-outline">View Details</Link>
-            </div>
+      <section className="relative flex min-h-[640px] items-center overflow-hidden">
+        <img src={hero} alt="Students and cyber professionals at a security conference" width={1920} height={1088} className="ken-burns absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/30" />
+        <div className="relative mx-auto w-full max-w-7xl px-6 py-24 text-ink-foreground">
+          <span className="anim-up inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">EC-Council Partnered Program | Certified Training</span>
+          <h1 className="anim-up delay-1 mt-5 max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
+            Introduction to <span className="text-shine">Artificial Intelligence</span>
+          </h1>
+          <p className="anim-up delay-2 mt-3 font-display text-sm font-semibold uppercase tracking-widest opacity-80">Understand | Explore | Use | Apply Responsibly</p>
+          <p className="anim-up delay-3 mt-5 max-w-lg text-lg opacity-85">A practical, beginner-friendly online course to help you understand AI and gain hands-on experience with everyday AI tools.</p>
+          <div className="anim-up delay-4 mt-8 flex flex-wrap gap-3">
+            <button onClick={() => setOpen(true)} className="btn-primary">Claim Free Course with Membership <ArrowRight className="h-4 w-4" /></button>
+            <Link to="/ai-course" className="btn-outline">View Details</Link>
           </div>
-          <img src={hero} alt="Student holding a laptop with a cyber security shield" width={1024} height={1280} className="mx-auto max-h-[560px] w-auto self-end object-contain" />
         </div>
       </section>
 
