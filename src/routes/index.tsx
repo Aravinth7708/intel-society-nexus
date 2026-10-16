@@ -63,8 +63,33 @@ function Home() {
         </div>
       </section>
 
+      <section className="grid md:grid-cols-2">
+        <div className="px-6 py-20 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] md:pr-12">
+          <div className="text-xs font-bold uppercase tracking-widest text-primary">Welcome to SCIS</div>
+          <h2 className="mt-2 text-3xl font-bold md:text-4xl">Society for Cyber Intelligent Systems</h2>
+          <p className="mt-2 font-semibold">Where "Securing Our Digital Future" matters.</p>
+          <p className="mt-5 text-muted-foreground">SCIS is a registered non-profit society (Reg S.No 78/2025, NITI Aayog DARPAN PY/2025/0684517) working to build awareness, skills and careers in cybersecurity and artificial intelligence. We partner with global certification bodies like EC-Council to bring industry-grade training to students, educators and working professionals across India.</p>
+          <p className="mt-4 text-muted-foreground">Through live courses, hands-on labs, awareness drives, hackathons and community meetups, we help members learn to protect people, data and systems — responsibly and ethically.</p>
+          <Link to="/about" className="btn-primary mt-7">Learn about us <ArrowRight className="h-4 w-4" /></Link>
+        </div>
+        <div className="relative bg-gradient-to-br from-primary to-primary-hover px-6 py-20 text-primary-foreground md:pr-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] md:pl-12">
+          <div className="space-y-8">
+            {[
+              { icon: ShieldCheck, t: "Our Mission", d: "Make cybersecurity and AI education accessible, affordable and practical for every learner." },
+              { icon: Brain, t: "Our Vision", d: "A digitally safe India powered by a skilled, ethical community of cyber defenders." },
+              { icon: Users, t: "Our Community", d: "Students, faculty, researchers and professionals learning and defending together." },
+            ].map((x) => (
+              <div key={x.t} className="flex gap-4 border-b border-primary-foreground/20 pb-6 last:border-0">
+                <x.icon className="h-8 w-8 shrink-0" />
+                <div><h3 className="text-lg font-bold">{x.t}</h3><p className="mt-1 text-sm opacity-90">{x.d}</p></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <SectionTitle eyebrow="Core Pillars" title="What you'll gain" />
+        <SectionTitle eyebrow="Core Pillars" title="What you'll gain" text="Our flagship AI course is built around four pillars that take you from curiosity to confident, responsible use." />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((p) => (
             <div key={p.t} className="group rounded-2xl border bg-card p-6 shadow-card transition hover:-translate-y-1 hover:border-primary">
@@ -72,6 +97,39 @@ function Home() {
               <h3 className="mt-5 text-lg font-bold">{p.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.d}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-ink">
+        <img src={soc} alt="" width={1280} height={896} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-35" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-6 py-24 text-ink-foreground md:grid-cols-2">
+          <div><p className="text-xl">Engage with</p><h2 className="text-5xl font-bold">SCIS Community</h2></div>
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-ink-foreground/30 p-6 backdrop-blur-sm">
+            <p className="max-w-xs">Connect to workshops, CTF challenges, webinars and news you care about.</p>
+            <Link to="/events" className="btn-primary">Get Involved</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <SectionTitle eyebrow="Focus Areas" title="What we work on" text="From classrooms to boardrooms, SCIS drives cyber readiness across six key areas." />
+        <div className="grid gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {focus.map((f, i) => (
+            <div key={f.t} className="bg-card p-8 transition hover:bg-primary-soft">
+              <div className="font-display text-sm font-bold text-primary">0{i + 1}</div>
+              <f.icon className="mt-4 h-8 w-8 text-primary" />
+              <h3 className="mt-4 text-lg font-bold">{f.t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{f.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-secondary py-20">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-4">
+          {[["500+", "Members & learners"], ["25+", "Workshops conducted"], ["15+", "Partner institutions"], ["100%", "Online & accessible"]].map(([v, l]) => (
+            <div key={l}><div className="font-display text-5xl font-bold text-primary">{v}</div><div className="mt-2 text-sm text-muted-foreground">{l}</div></div>
           ))}
         </div>
       </section>
