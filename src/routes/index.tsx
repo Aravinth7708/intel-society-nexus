@@ -242,7 +242,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6">
+      <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="relative overflow-hidden rounded-3xl">
           <img src={lab} alt="Students working together in a cyber lab" width={1280} height={896} loading="lazy" className="h-80 w-full object-cover" />
           <div className="absolute inset-0 flex flex-col items-start justify-end bg-gradient-to-t from-ink/85 to-transparent p-8 text-ink-foreground">
