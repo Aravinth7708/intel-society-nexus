@@ -113,3 +113,23 @@
   animation: shine 3s linear infinite;
 }
 .delay-1 { animation-delay: .15s; } .delay-2 { animation-delay: .3s; } .delay-3 { animation-delay: .45s; } .delay-4 { animation-delay: .6s; }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes pulse-ring { 0% { transform: scale(.8); opacity: .8; } 100% { transform: scale(2.2); opacity: 0; } }
+@utility marquee { animation: marquee 30s linear infinite; }
+@utility float-y { animation: float-y 5s ease-in-out infinite; }
+@utility caret { animation: blink 1s step-end infinite; }
+@utility pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal[data-dir="left"] { transform: translateX(-60px); }
+.reveal[data-dir="right"] { transform: translateX(60px); }
+.reveal[data-dir="zoom"] { transform: scale(.92); }
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+@utility dot-grid {
+  background-image: radial-gradient(oklch(0.637 0.237 25.331 / 25%) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+@utility stroke-text { -webkit-text-stroke: 1.5px var(--border); color: transparent; }
