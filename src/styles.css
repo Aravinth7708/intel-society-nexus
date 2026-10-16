@@ -101,3 +101,15 @@
   padding: .65rem .9rem; font-size: .9rem; outline: none;
   &:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
 }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes ken-burns { from { transform: scale(1); } to { transform: scale(1.12); } }
+@keyframes shine { to { background-position: 200% center; } }
+@utility anim-up { opacity: 0; animation: fade-up .8s cubic-bezier(.2,.7,.2,1) forwards; }
+@utility ken-burns { animation: ken-burns 18s ease-in-out infinite alternate; }
+@utility text-shine {
+  background: linear-gradient(90deg, var(--primary), oklch(0.8 0.15 30), var(--primary));
+  background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shine 3s linear infinite;
+}
+.delay-1 { animation-delay: .15s; } .delay-2 { animation-delay: .3s; } .delay-3 { animation-delay: .45s; } .delay-4 { animation-delay: .6s; }
