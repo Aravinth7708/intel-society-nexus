@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import hero from "@/assets/hero-boy.png";
+import hero from "@/assets/student-real.jpg";
 
 export function AuthCard({ mode }: { mode: "signin" | "signup" }) {
   const [done, setDone] = useState(false);
@@ -8,7 +8,7 @@ export function AuthCard({ mode }: { mode: "signin" | "signup" }) {
   return (
     <section className="cyber-grid">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-16 md:grid-cols-2">
-        <img src={hero} alt="" width={1024} height={1280} className="mx-auto hidden max-h-[520px] w-auto object-contain md:block" />
+        <img src={hero} alt="" width={1024} height={1280} className="mx-auto hidden max-h-[520px] w-auto rounded-3xl object-cover shadow-card md:block" />
         <div className="rounded-3xl border bg-card p-8 shadow-card">
           <h1 className="text-3xl font-bold">{up ? "Create your account" : "Welcome back"}</h1>
           <p className="mt-2 text-sm text-muted-foreground">{up ? "Join the SCIS cyber community." : "Sign in to your SCIS account."}</p>

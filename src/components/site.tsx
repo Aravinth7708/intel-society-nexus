@@ -115,11 +115,11 @@ export function PageHero({ eyebrow, title, text, image }: { eyebrow: string; tit
     <section className="cyber-grid border-b bg-secondary">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2">
         <div>
-          <span className="rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-accent-foreground">{eyebrow}</span>
-          <h1 className="mt-4 text-4xl font-bold md:text-5xl">{title}</h1>
-          <p className="mt-4 max-w-lg text-muted-foreground">{text}</p>
+          <span className="anim-up inline-block rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-accent-foreground">{eyebrow}</span>
+          <h1 className="anim-up delay-1 mt-4 text-4xl font-bold md:text-5xl">{title}</h1>
+          <p className="anim-up delay-2 mt-4 max-w-lg text-muted-foreground">{text}</p>
         </div>
-        {image && <img src={image} alt="" width={1280} height={896} className="rounded-2xl shadow-card" />}
+        {image && <div className="anim-up delay-3 overflow-hidden rounded-2xl shadow-card"><img src={image} alt="" width={1280} height={896} className="ken-burns w-full" /></div>}
       </div>
     </section>
   );
