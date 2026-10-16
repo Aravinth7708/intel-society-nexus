@@ -1,24 +1,128 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Brain, Wrench, ShieldCheck, Rocket, Clock, FlaskConical, Award, Users, ArrowRight, Gift, Plus } from "lucide-react";
+import hero from "@/assets/hero-boy.png";
+import exam from "@/assets/exam-boy.jpg";
+import lab from "@/assets/lab-group.jpg";
+import { SectionTitle, RegisterModal } from "@/components/site";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "SCIS — Society for Cyber Intelligent Systems" },
+      { name: "description", content: "Join SCIS for cybersecurity & AI training with EC-Council. Lifetime membership ₹1,000 with a free AI course." },
+      { property: "og:title", content: "SCIS — Society for Cyber Intelligent Systems" },
+      { property: "og:description", content: "Cybersecurity & AI training with EC-Council. Lifetime membership with a free AI course." },
+    ],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const pillars = [
+  { icon: Brain, t: "AI Fundamentals", d: "Understand how AI works and its real-world applications." },
+  { icon: Wrench, t: "Hands-on Practice", d: "Explore popular AI tools through guided exercises." },
+  { icon: ShieldCheck, t: "Responsible AI Use", d: "Ethics, privacy and best practices for safe use." },
+  { icon: Rocket, t: "Future Opportunities", d: "Build a foundation for learning and career growth." },
+];
+const stats = [
+  { icon: Clock, v: "4 Hours", l: "Live Training" },
+  { icon: FlaskConical, v: "6 Months", l: "iLab Virtual Sandbox" },
+  { icon: Award, v: "EC-Council", l: "Certificate of Participation" },
+  { icon: Users, v: "Open to All", l: "No technical background needed" },
+];
+
+function Home() {
+  const [open, setOpen] = useState(false);
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <section className="cyber-grid relative overflow-hidden">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 pt-14 md:grid-cols-2">
+          <div className="pb-14">
+            <span className="rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-accent-foreground">EC-Council Partnered Program | Certified Training</span>
+            <h1 className="mt-5 text-4xl font-bold leading-tight md:text-6xl">
+              Introduction to <span className="text-primary">Artificial Intelligence</span>
+            </h1>
+            <p className="mt-3 font-display text-sm font-semibold uppercase tracking-widest text-muted-foreground">Understand | Explore | Use | Apply Responsibly</p>
+            <p className="mt-5 max-w-lg text-lg text-muted-foreground">A practical, beginner-friendly online course to help you understand AI and gain hands-on experience with everyday AI tools.</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <button onClick={() => setOpen(true)} className="btn-primary">Claim Free Course with Membership <ArrowRight className="h-4 w-4" /></button>
+              <Link to="/ai-course" className="btn-outline">View Details</Link>
+            </div>
+          </div>
+          <img src={hero} alt="Student holding a laptop with a cyber security shield" width={1024} height={1280} className="mx-auto max-h-[560px] w-auto self-end object-contain" />
+        </div>
+      </section>
+
+      <section className="border-y bg-background">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-8 md:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.l} className="flex items-center gap-3">
+              <div className="rounded-xl bg-primary-soft p-3 text-primary"><s.icon className="h-5 w-5" /></div>
+              <div><div className="font-display font-bold">{s.v}</div><div className="text-xs text-muted-foreground">{s.l}</div></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <SectionTitle eyebrow="Core Pillars" title="What you'll gain" />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {pillars.map((p) => (
+            <div key={p.t} className="group rounded-2xl border bg-card p-6 shadow-card transition hover:-translate-y-1 hover:border-primary">
+              <div className="inline-flex rounded-xl bg-primary p-3 text-primary-foreground shadow-red"><p.icon className="h-5 w-5" /></div>
+              <h3 className="mt-5 text-lg font-bold">{p.t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-secondary py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-2">
+          <img src={exam} alt="Student taking an online AI exam" width={1280} height={896} loading="lazy" className="rounded-2xl shadow-card" />
+          <div>
+            <div className="text-xs font-bold uppercase tracking-widest text-primary">Featured Course</div>
+            <h2 className="mt-2 text-3xl font-bold md:text-4xl">Learn AI with EC-Council trainers</h2>
+            <p className="mt-4 text-muted-foreground">Live, instructor-led sessions, real-world demos and 6 months of iLab access to practise with AI tools at your own pace.</p>
+            <Link to="/ai-course" className="btn-primary mt-6">Explore curriculum <ArrowRight className="h-4 w-4" /></Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <div className="grid items-stretch gap-6 rounded-3xl border bg-card p-8 shadow-card md:grid-cols-[1fr_auto_1fr] md:p-12">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-widest text-primary">SCIS Lifetime Membership</div>
+            <div className="mt-3 font-display text-5xl font-bold">₹1,000</div>
+            <div className="text-sm text-muted-foreground">One-time fee</div>
+          </div>
+          <div className="flex items-center justify-center"><div className="rounded-full bg-primary p-3 text-primary-foreground shadow-red"><Plus /></div></div>
+          <div className="rounded-2xl bg-primary-soft p-6">
+            <Gift className="h-7 w-7 text-primary" />
+            <h3 className="mt-3 text-xl font-bold">FREE AI Course</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Includes 6 months iLab access when you join as a lifetime member.</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t pt-6 md:col-span-3">
+            <div className="font-display font-bold">LEARN AI TODAY. BUILD A BRIGHTER TOMORROW.</div>
+            <button onClick={() => setOpen(true)} className="btn-primary">Register Now</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6">
+        <div className="relative overflow-hidden rounded-3xl">
+          <img src={lab} alt="Students working together in a cyber lab" width={1280} height={896} loading="lazy" className="h-80 w-full object-cover" />
+          <div className="absolute inset-0 flex flex-col items-start justify-end bg-gradient-to-t from-ink/85 to-transparent p-8 text-ink-foreground">
+            <h3 className="text-2xl font-bold md:text-3xl">Join a growing cyber community</h3>
+            <p className="mt-2 max-w-lg opacity-80">Get updates on events, workshops and new programs.</p>
+            <form className="mt-5 flex w-full max-w-md gap-2" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" required placeholder="Your email address" className="field text-foreground" />
+              <button className="btn-primary shrink-0">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <RegisterModal open={open} onClose={() => setOpen(false)} />
+    </>
   );
 }
