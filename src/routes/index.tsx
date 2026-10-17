@@ -43,7 +43,7 @@ function Home() {
   const [tab, setTab] = useState(0);
   const [ti, setTi] = useState(0);
   useEffect(() => { const t = setInterval(() => setTi((x) => (x + 1) % testimonials.length), 6000); return () => clearInterval(t); }, []);
-  const tm = testimonials[ti];
+  const tm = testimonials[ti]!;
 
   return (
     <>
@@ -169,9 +169,9 @@ function Home() {
             <img src={[img.aiChip, img.laptop, img.security, img.meeting][tab]} alt="" loading="lazy" className="h-72 w-full object-cover md:h-full" />
             <div className="p-8">
               <div className="text-sm font-semibold text-primary">Module 0{tab + 1}</div>
-              <h3 className="mt-2 text-2xl font-bold">{modules[tab].t}</h3>
-              <p className="mt-3 text-muted-foreground">{modules[tab].d}</p>
-              <ul className="mt-6 space-y-3">{modules[tab].pts.map((p) => <li key={p} className="flex gap-3"><CheckCircle2 className="h-5 w-5 text-primary" />{p}</li>)}</ul>
+              <h3 className="mt-2 text-2xl font-bold">{modules[tab]!.t}</h3>
+              <p className="mt-3 text-muted-foreground">{modules[tab]!.d}</p>
+              <ul className="mt-6 space-y-3">{modules[tab]!.pts.map((p) => <li key={p} className="flex gap-3"><CheckCircle2 className="h-5 w-5 text-primary" />{p}</li>)}</ul>
               <Link to="/ai-course" className="btn-primary mt-8">Full curriculum</Link>
             </div>
           </div>
