@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Brain, ShieldCheck, Users, ArrowRight, Bug, Search, GraduationCap, Megaphone, Quote, CheckCircle2, ChevronLeft, ChevronRight, Calendar, MapPin, Play, Award, Lock, Sparkles } from "lucide-react";
+import { Brain, ShieldCheck, Users, ArrowRight, Bug, Search, GraduationCap, Megaphone, Quote, CheckCircle2, ChevronLeft, ChevronRight, MapPin, Play, Award, Lock, Sparkles } from "lucide-react";
 import { RegisterModal } from "@/components/site";
 import { Reveal, CountUp, TypeWords, Marquee } from "@/components/motion";
 import { img } from "@/lib/images";
@@ -48,18 +48,18 @@ function Home() {
   return (
     <>
       {/* HERO — split with photo collage */}
-      <section className="relative overflow-hidden">
-        <div className="dot-grid absolute -right-20 top-10 h-96 w-96 opacity-60" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-24">
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-ink bg-cover bg-fixed bg-center text-ink-foreground" style={{ backgroundImage: `url(${img.cyberCode})` }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50" />
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-24">
           <div>
-            <div className="anim-up inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-xs font-semibold shadow-card">
+            <div className="anim-up inline-flex items-center gap-2 rounded-full border border-ink-foreground/20 bg-ink-foreground/10 px-3 py-1.5 text-xs font-semibold backdrop-blur">
               <span className="relative flex h-2 w-2"><span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-primary" /><span className="relative h-2 w-2 rounded-full bg-primary" /></span>
               Registrations open · EC-Council Partnered
             </div>
             <h1 className="anim-up delay-1 mt-6 text-5xl font-bold leading-[1.05] md:text-7xl">
               Learn to <br /><TypeWords words={["defend", "secure", "think AI", "lead"]} /><br />the digital world.
             </h1>
-            <p className="anim-up delay-2 mt-6 max-w-lg text-lg text-muted-foreground">The Society for Cyber Intelligent Systems trains students and professionals in cybersecurity and artificial intelligence — with certified courses, live labs and a community that grows with you.</p>
+            <p className="anim-up delay-2 mt-6 max-w-lg text-lg opacity-80">The Society for Cyber Intelligent Systems trains students and professionals in cybersecurity and artificial intelligence — with certified courses, live labs and a community that grows with you.</p>
             <div className="anim-up delay-3 mt-8 flex flex-wrap items-center gap-4">
               <button onClick={() => setOpen(true)} className="btn-primary">Join for ₹1,000 + Free AI Course <ArrowRight className="h-4 w-4" /></button>
               <Link to="/ai-course" className="group flex items-center gap-3 text-sm font-semibold">
@@ -69,9 +69,9 @@ function Home() {
             </div>
             <div className="anim-up delay-4 mt-10 flex items-center gap-4">
               <div className="flex -space-x-3">
-                {[img.womanTech, img.students, img.teamWork, img.meeting].map((s, i) => <img key={i} src={s.replace("w=1200", "w=120")} alt="" className="h-10 w-10 rounded-full border-2 border-background object-cover" />)}
+                {[img.womanTech, img.students, img.teamWork, img.meeting].map((s, i) => <img key={i} src={s.replace("w=1200", "w=120")} alt="" className="h-10 w-10 rounded-full border-2 border-ink object-cover" />)}
               </div>
-              <div className="text-sm"><b>500+ learners</b> <span className="text-muted-foreground">already part of SCIS</span></div>
+              <div className="text-sm"><b>500+ learners</b> <span className="opacity-70">already part of SCIS</span></div>
             </div>
           </div>
 
@@ -79,15 +79,15 @@ function Home() {
             <div className="anim-up delay-2 absolute right-0 top-0 h-[380px] w-[72%] overflow-hidden rounded-3xl shadow-card">
               <img src={img.womanTech} alt="Security professional at work" className="ken-burns h-full w-full object-cover" />
             </div>
-            <div className="anim-up delay-3 absolute bottom-0 left-0 h-[260px] w-[55%] overflow-hidden rounded-3xl border-8 border-background shadow-card">
+            <div className="anim-up delay-3 absolute bottom-0 left-0 h-[260px] w-[55%] overflow-hidden rounded-3xl border-8 border-ink shadow-card">
               <img src={img.hacker} alt="Cybersecurity analyst" className="h-full w-full object-cover" />
             </div>
-            <div className="float-y absolute left-4 top-16 flex items-center gap-3 rounded-2xl bg-card p-4 shadow-card">
+            <div className="float-y absolute left-4 top-16 flex items-center gap-3 rounded-2xl bg-card p-4 text-foreground shadow-card">
               <div className="rounded-xl bg-primary p-2.5 text-primary-foreground"><ShieldCheck className="h-5 w-5" /></div>
               <div><div className="text-xs text-muted-foreground">Threats blocked</div><div className="font-display text-lg font-bold">1.2M+</div></div>
             </div>
-            <div className="float-y absolute bottom-16 right-2 flex items-center gap-3 rounded-2xl bg-ink p-4 text-ink-foreground shadow-card [animation-delay:1.5s]">
-              <Award className="h-7 w-7 text-primary" />
+            <div className="float-y absolute bottom-16 right-2 flex items-center gap-3 rounded-2xl bg-primary p-4 text-primary-foreground shadow-red [animation-delay:1.5s]">
+              <Award className="h-7 w-7" />
               <div><div className="text-xs opacity-70">Certified by</div><div className="font-display font-bold">EC-Council</div></div>
             </div>
           </div>
